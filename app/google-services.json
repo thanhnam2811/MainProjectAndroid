@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "501270288402",
+    "project_id": "mainproject-ec380",
+    "storage_bucket": "mainproject-ec380.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:501270288402:android:efc4eca7973ee3dd5220cb",
+        "android_client_info": {
+          "package_name": "com.example.mainproject"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "501270288402-5hp54mannvkcfqq3fdt9618gph1tcnl6.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCUyPZAfhVkIhb3QN75o-v76qdV4p4pbaY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "501270288402-5hp54mannvkcfqq3fdt9618gph1tcnl6.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

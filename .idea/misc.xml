@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DesignSurface">
+    <option name="filePathToZoomLevelMap">
+      <map>
+        <entry key="..\:/IDE/AndroidStudio/LapTrinhMobile/MainProject/app/src/main/res/layout/activity_calculator.xml" value="0.358695652173913" />
+        <entry key="..\:/IDE/AndroidStudio/LapTrinhMobile/MainProject/app/src/main/res/layout/activity_customer_manager.xml" value="0.3625" />
+        <entry key="..\:/IDE/AndroidStudio/LapTrinhMobile/MainProject/app/src/main/res/layout/activity_dashboard.xml" value="0.358695652173913" />
+        <entry key="..\:/IDE/AndroidStudio/LapTrinhMobile/MainProject/app/src/main/res/layout/activity_dktbactivity.xml" value="0.3625" />
+        <entry key="..\:/IDE/AndroidStudio/LapTrinhMobile/MainProject/app/src/main/res/layout/activity_firebase_demo.xml" value="0.31351351351351353" />
+        <entry key="..\:/IDE/AndroidStudio/LapTrinhMobile/MainProject/app/src/main/res/layout/activity_grid_view.xml" value="0.3625" />
+        <entry key="..\:/IDE/AndroidStudio/LapTrinhMobile/MainProject/app/src/main/res/layout/activity_list_view.xml" value="0.24592391304347827" />
+        <entry key="..\:/IDE/AndroidStudio/LapTrinhMobile/MainProject/app/src/main/res/layout/activity_login.xml" value="0.358695652173913" />
+        <entry key="..\:/IDE/AndroidStudio/LapTrinhMobile/MainProject/app/src/main/res/layout/activity_main.xml" value="0.3484375" />
+        <entry key="..\:/IDE/AndroidStudio/LapTrinhMobile/MainProject/app/src/main/res/layout/activity_product_manager.xml" value="0.3125" />
+        <entry key="..\:/IDE/AndroidStudio/LapTrinhMobile/MainProject/app/src/main/res/layout/activity_receive.xml" value="0.2907608695652174" />
+        <entry key="..\:/IDE/AndroidStudio/LapTrinhMobile/MainProject/app/src/main/res/layout/activity_send.xml" value="0.28894927536231885" />
+        <entry key="..\:/IDE/AndroidStudio/LapTrinhMobile/MainProject/app/src/main/res/layout/activity_user_manager.xml" value="0.3490740740740741" />
+        <entry key="..\:/IDE/AndroidStudio/LapTrinhMobile/MainProject/app/src/main/res/layout/customer_item.xml" value="0.3625" />
+        <entry key="..\:/IDE/AndroidStudio/LapTrinhMobile/MainProject/app/src/main/res/layout/firebase_demo_item.xml" value="0.33" />
+        <entry key="..\:/IDE/AndroidStudio/LapTrinhMobile/MainProject/app/src/main/res/layout/layout_gridview.xml" value="0.3569230769230769" />
+        <entry key="..\:/IDE/AndroidStudio/LapTrinhMobile/MainProject/app/src/main/res/layout/layout_listview.xml" value="0.3569230769230769" />
+        <entry key="..\:/IDE/AndroidStudio/LapTrinhMobile/MainProject/app/src/main/res/layout/product_item.xml" value="0.15220179563916203" />
+        <entry key="..\:/IDE/AndroidStudio/LapTrinhMobile/MainProject/app/src/main/res/layout/product_list_view.xml" value="0.3625" />
+        <entry key="..\:/IDE/AndroidStudio/LapTrinhMobile/MainProject/app/src/main/res/layout/user_item.xml" value="0.3625" />
+      </map>
+    </option>
+  </component>
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="Android Studio default JDK" project-jdk-type="JavaSDK">
+    <output url="file://$PROJECT_DIR$/build/classes" />
+  </component>
+  <component name="ProjectType">
+    <option name="id" value="Android" />
+  </component>
+</project>
