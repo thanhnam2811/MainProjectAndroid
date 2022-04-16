@@ -2,9 +2,12 @@ package com.example.mainproject;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
@@ -24,9 +27,11 @@ import com.google.firebase.database.ValueEventListener;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+import java.util.Objects;
 
 public class FirebaseDemo extends AppCompatActivity implements AdapterView.OnItemClickListener {
 
+    private static final int REQUEST_CALLPHONE_CODE = 1;
     private DatabaseReference mDatabase;
     private final String firebase_url = "https://mainproject-ec380-default-rtdb.asia-southeast1.firebasedatabase.app/";
     EditText id, name, phone;
@@ -56,10 +61,13 @@ public class FirebaseDemo extends AppCompatActivity implements AdapterView.OnIte
                 GenericTypeIndicator<List<Contact>> t = new GenericTypeIndicator<List<Contact>>() {
                 };
                 contacts = dataSnapshot.getValue(t);
-                contacts.removeIf(contact -> contact == null);
+                assert contacts != null;
+                contacts.removeIf(Objects::isNull);
 
                 adapter = new ContactAdapter(contacts, FirebaseDemo.this, onItemClickListener);
                 recyclerView.setAdapter(adapter);
+
+                id.setText(String.valueOf(getNextId(contacts)));
             }
 
             @Override
@@ -113,5 +121,25 @@ public class FirebaseDemo extends AppCompatActivity implements AdapterView.OnIte
         id.setText(String.valueOf(contact.getId()));
         name.setText(contact.getName());
         phone.setText(contact.getPhone());
+    }
+
+    // This function is called when user accept or decline the permission.
+    // Request Code is used to check which permission called this function.
+    // This request code is provided when user is prompt for permission.
+    @Override
+    public void onRequestPermissionsResult(int requestCode,
+                                           @NonNull String[] permissions,
+                                           @NonNull int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+
+        if (requestCode == REQUEST_CALLPHONE_CODE) {
+            // Checking whether user granted the permission or not.
+            if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                // Showing the toast message
+                Toast.makeText(FirebaseDemo.this, "Phone call Permission Granted", Toast.LENGTH_SHORT).show();
+            } else {
+                Toast.makeText(FirebaseDemo.this, "Phone call Permission Denied", Toast.LENGTH_SHORT).show();
+            }
+        }
     }
 }

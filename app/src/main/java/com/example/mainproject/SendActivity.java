@@ -29,14 +29,11 @@ public class SendActivity extends AppCompatActivity {
 //        getSupportActionBar().hide();
 
         Button btnSendData = findViewById(R.id.btnCallActivity);
-        btnSendData.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                EditText txtDataSend = findViewById(R.id.txtDataSend);
-                Intent intent = new Intent(SendActivity.this, ReceiveActivity.class);
-                intent.putExtra(REQUEST_DATA, txtDataSend.getText().toString());
-                startActivityForResult(intent, 1);
-            }
+        btnSendData.setOnClickListener(view -> {
+            EditText txtDataSend = findViewById(R.id.txtDataSend);
+            Intent intent = new Intent(SendActivity.this, ReceiveActivity.class);
+            intent.putExtra(REQUEST_DATA, txtDataSend.getText().toString());
+            startActivityForResult(intent, 1);
         });
 
         Button btnCall = findViewById(R.id.btnCallPhone);
@@ -46,7 +43,6 @@ public class SendActivity extends AppCompatActivity {
                 intent.setData(Uri.parse("tel:0981771024"));
                 startActivity(intent);
             }
-
         });
     }
 
