@@ -1,12 +1,5 @@
 package com.example.mainproject;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.app.ActivityCompat;
-import androidx.core.content.ContextCompat;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-
 import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.view.View;
@@ -15,19 +8,22 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
 import com.example.mainproject.adapter.ContactAdapter;
 import com.example.mainproject.model.Contact;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.GenericTypeIndicator;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
-import java.util.Objects;
 
 public class FirebaseDemo extends AppCompatActivity implements AdapterView.OnItemClickListener {
 
@@ -35,7 +31,7 @@ public class FirebaseDemo extends AppCompatActivity implements AdapterView.OnIte
     private DatabaseReference mDatabase;
     private final String firebase_url = "https://mainproject-ec380-default-rtdb.asia-southeast1.firebasedatabase.app/";
     EditText id, name, phone;
-    List<Contact> contacts;
+    List<Contact> contacts = new ArrayList<>();
     RecyclerView recyclerView;
     ContactAdapter adapter;
     private final AdapterView.OnItemClickListener onItemClickListener = this;
@@ -44,6 +40,7 @@ public class FirebaseDemo extends AppCompatActivity implements AdapterView.OnIte
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_firebase_demo);
+        setTitle("Firebase Demo");
 
         // Binding
         id = findViewById(R.id.txt_id);
@@ -57,17 +54,24 @@ public class FirebaseDemo extends AppCompatActivity implements AdapterView.OnIte
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 // This method is called once with the initial value and again
                 // whenever data at this location is updated.
+                contacts.clear();
 
-                GenericTypeIndicator<List<Contact>> t = new GenericTypeIndicator<List<Contact>>() {
-                };
-                contacts = dataSnapshot.getValue(t);
-                assert contacts != null;
-                contacts.removeIf(Objects::isNull);
+                for (DataSnapshot ds : dataSnapshot.getChildren()) {
+                    try {
+                        Map<String, Object> singleValue = (Map<String, Object>) ds.getValue();
+                        assert singleValue != null;
+                        long id = (long) singleValue.get("id");
+                        String name = (String) singleValue.get("name");
+                        String phone = (String) singleValue.get("phone");
+                        contacts.add(new Contact(id, name, phone));
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+                }
 
                 adapter = new ContactAdapter(contacts, FirebaseDemo.this, onItemClickListener);
                 recyclerView.setAdapter(adapter);
-
-                id.setText(String.valueOf(getNextId(contacts)));
+                resetText();
             }
 
             @Override
@@ -99,8 +103,8 @@ public class FirebaseDemo extends AppCompatActivity implements AdapterView.OnIte
         });
     }
 
-    public int getNextId(List<Contact> contacts) {
-        int id = 0;
+    public long getNextId(List<Contact> contacts) {
+        long id = 0;
         for (Contact contact : contacts) {
             if (contact.getId() > id) {
                 id = contact.getId();

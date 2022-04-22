@@ -3,10 +3,10 @@ package com.example.mainproject.model;
 import androidx.annotation.NonNull;
 
 public class Contact {
-    private int id;
+    private long id;
     private String name, phone;
 
-    public Contact(int id, String name, String phone) {
+    public Contact(long id, String name, String phone) {
         this.id = id;
         this.name = name;
         this.phone = phone;
@@ -31,11 +31,11 @@ public class Contact {
         this.phone = phone;
     }
 
-    public int getId() {
+    public long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(long id) {
         this.id = id;
     }
 
